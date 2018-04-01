@@ -30,6 +30,7 @@
                         <h2 class="footer-wid-title">Categorias</h2>
                         <ul>
                             <?php require $this->checkTemplate("categories-menu");?>
+
                         </ul>                        
                     </div>
                 </div>
@@ -55,7 +56,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2017 Hcode Treinamentos. <a href="http://www.hcode.com.br" target="_blank">hcode.com.br</a></p>
+                        <p>&copy; 2018 Maneiraweb Soluções digitais!. <a href="http://www.maneiraweb.com.br" target="_blank">maneiraweb.com.br</a></p>
                     </div>
                 </div>
                 

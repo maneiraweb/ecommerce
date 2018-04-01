@@ -950,7 +950,11 @@ td.actions div.coupon {
 .cart_totals {
     float: right;
     margin-bottom: 50px;
-    width: 40%;
+    width: 30%;
+}
+
+.discount {
+  float: left;
 }
 .cart-collaterals h2 {
     color: #e67e22;
