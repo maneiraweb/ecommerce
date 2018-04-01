@@ -16,6 +16,16 @@ $app->get('/', function() {
 		'products'=>Product::checkList($products)
 		]);
 });
+
+$app->get('/contact', function() {
+    
+  $page = new Page();
+
+  $page->setTpl("contact");
+
+});
+
+
 $app->get("/categories/:idcategory", function($idcategory){
     $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
     $category = new Category();
