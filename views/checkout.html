@@ -1,283 +1,320 @@
-<div class="page-head">
-	<h1>
-	<div id="onestepcheckout-title">
-    	<p id="onestepcheckout-title-description">Por favor, informe seus dados abaixo para concluir a compra.</p>
-	</div>
-</h1>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="step" id="step1">
-            <!-- class step1 -->
-            <div class="number">
-                <span>1</span>
-            </div>
-            <div class="title">
-                <p id="onestepcheckout-title-description">Email Address</p>
-            </div>
-            <div class="modify">
-                <i class="fa fa-plus-circle"></i>
-            </div>
-        </div>
-        <div class="content" id="email">
-            <form class="go-right">
-                <div>
-                    <input type="email" name="email" value="" id="email-address" placeholder="Email Address" data-trigger="change" data-validation-minlength="1" data-type="email" data-required="true" data-error-message="Enter a valid email address." />
-                    <label for="email">Email Address</label>
-                </div>
-                <button class="login">Login</button>
-                <button class="create">Create Account</button>
-            </form>
-            <a class="continue" href="#">Continue</a>
-        </div>
-        <div class="step" id="step2">
-            <div class="number">
-                <span>2</span>
-            </div>
-            <div class="title">
-                <p id="onestepcheckout-title-description">INFORMAÇÕES PESSOAIS</p>
-            </div>
-        </div>
-        <div class="content" id="address">
-            <form class="go-right">
-                <div>
-                    <input type="name" name="first_name" value="" id="first_name" placeholder="First Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your First Name" />
-                    <label for="first_name">First Name</label>
-                </div>
 
-                <div>
-                    <input type="name" name="last_name" value="" id="last_name" placeholder="Last Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Last Name" />
-                    <label for="last_name">Last Name</label>
-                </div>
-                <div>
-                    <input type="phone" name="telephone" value="" id="telephone" placeholder="Phone(555)-555-5555" data-trigger="change" data-validation-minlength="1" data-type="number" data-required="true" data-error-message="Enter Your Telephone Number" />
-                    <label for="telephone">Telephone</label>
-                </div>
-                <div>
-                    <input type="text" name="company" value="" id="company" placeholder="Company" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="false" />
-                    <label for="Company">Company</label>
-                </div>
-                <div>
-                    <input type="text" name="address" value="" id="address" placeholder="Address" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Address" />
-                    <label for="Address">Address</label>
-                </div>
-                <div>
-                    <input type="text" name="city" value="" id="city" placeholder="City" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing City" />
-                    <label for="city">City</label>
-                </div>
-                <div>
-                    <div class="state_options">
-                        <div class="select">
-                            <select id="state">
-                                <option value="1">Alabama</option>
-                                <option value="2">Alaska</option>
-                                <option value="3">Arkansas</option>
-                                <option value="4">Etc.</option>
-                            </select>
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(res/site/images/heading-pages-01.jpg);">
+   <h2 class="l-text2 t-center">
+      Cart
+   </h2>
+</section>
+<div class"container">
+
+       {if="$error != ''"}
+         <div class="alert alert-danger">
+          {$error}
+         </div>
+         {/if}
+   <div class="row">
+      <div class="col-xs-6 col-sm-4">
+         <div class="opc">
+            <div id="onestepcheckout-address-billing-wrapper">
+               <div class="step-title">
+                  <span class="number onestepcheckout-number">1</span>
+                  <h2>INFORMAÇÕES PESSOAIS</h2>
+               </div>
+               <div class="control tipopessoa"">
+                  <li>
+                     <p class="required">Campos obrigatório</p>
+                  </li>
+                  <label class="radio-inline">
+                  <input type="radio" name="survey" id="Radios1" value="Yes">
+                  Pessoa Física
+                  </label>
+                  <label class="radio-inline">
+                  <input type="radio" name="survey" id="Radios2" value="No">
+                  Pessoa Juridica
+                  </label>
+               </div>
+               <li class="osc-title">Informações de Acesso</li>
+               <li class="wide">
+                  <label for="billing:email" class="required"><em>*</em>Email</label>
+                  <div class="input-box">
+                     <input name="billing[email]" id="billing:email" title="Email" class="input-text validate-email validate-email-exist required-entry" value="" type="text">
+                  </div>
+               </li>
+               <li class="control">
+                  <input name="billing[create_account]" value="1" title="Criar Conta" id="billing:create_account" class="checkbox" type="checkbox"><label for="billing:create_account">Criar Conta</label>
+               </li>
+               <li class="osc-title">Informações Pessoais</li>
+               <li class="wide">
+                  <label for="billing:taxvat" class="required"><em>*</em>CPF</label>
+                  <div class="input-box">
+                     <input id="billing:taxvat" name="billing[taxvat]" value="" title="Número CPF/CNPJ" class="input-text required-entry validate-taxvat" maxlength="14" type="text">
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:ie" class="required"><em>*</em>RG</label>
+                  <div class="input-box">
+                     <input id="billing:ie" name="billing[ie]" title="IE (Inscrição Estadual)" class="input-text" value="" maxlength="30" type="text">
+                  </div>
+               </li>
+               <div class="customer-name">
+                  <div class="field name-firstname">
+                     <label for="billing:firstname" class="required"><em>*</em>Nome</label>
+                     <div class="input-box">
+                        <input id="billing:firstname" name="billing[firstname]" value="" title="Nome" maxlength="255" class="input-text required-entry" type="text">
+                     </div>
+                  </div>
+                  <div class="field name-lastname">
+                     <label for="billing:lastname" class="required"><em>*</em>Sobrenome</label>
+                     <div class="input-box">
+                        <input id="billing:lastname" name="billing[lastname]" value="" title="Sobrenome" maxlength="255" class="input-text required-entry" type="text">
+                     </div>
+                  </div>
+               </div>
+               <li class="fields">
+                  <div class="field">
+                     <label for="billing:telephone" class="required"><em>*</em>Telefone</label>
+                     <div class="input-box">
+                        <input name="billing[telephone]" title="Telefone" class="input-text validate-phone-br  required-entry" id="billing:telephone" value="" placeholder="(xx) 4567-8900" type="text">
+                     </div>
+                  </div>
+                  <div class="field">
+                     <label for="billing:fax">Celular</label>
+                     <div class="input-box">
+                        <input name="billing[fax]" title="Celular" class="input-text validate-phone-br " id="billing:fax" value="" placeholder="(xx) x4567-8900" type="text">
+                     </div>
+                  </div>
+               </li>
+               <li class="osc-title">Endereço de Cobrança</li>
+               <li class="fields">
+                  <div class="field">
+                     <label for="billing:postcode" class="required"><em>*</em>CEP</label>
+                     <div class="input-box">
+                        <input title="CEP" name="billing[postcode]" id="billing:postcode" class="input-text validate-number  required-entry validate-zip-br" value="" maxlength="8" onblur="buscaCep('billing');" type="text">
+                     </div>
+                  </div>
+                  <div class="field">
+                     <label>&nbsp;</label>        
+                     <div class="input-box">
+                        <div class="onestepcheckout-postcod-process onestepcheckout-overlay-16">&nbsp;</div>
+                        <a class="nao-sei-cep" href="#" onclick="popWin('http://m.correios.com.br/movel/buscaCep.do', 'I forgot my zipcode', 'width=360,height=370,left=200,top=50,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;">Não sei meu cep? </a>
+                     </div>
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:street1" class="required"><em>*</em>Endereço</label>
+                  <div class="input-box">
+                     <input title="Endereço" name="" id="" class="input-text  required-entry" value="{$address.desaddress}" autocomplete="off" type="text">
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:street2" class="required"> <em>*</em> Número</label>
+                  <div class="input-box">
+                     <input title="Número" name="numero" id="" class="input-text required-entry" value="{$address.desnumber}" autocomplete="off" type="text">
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:street3">Complemento</label>
+                  <div class="input-box">
+                     <input title="Complemento" name="" id="" class="input-text " value="{$address.descomplement}" autocomplete="off" type="text">
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:street4" class="required"> <em>*</em> Bairro</label>
+                  <div class="input-box">
+                     <input title="Bairro" name="Bairro" id="bairro" class="input-text required-entry" value="{$address.desdistrict}" autocomplete="off" type="text">
+                  </div>
+               </li>
+               <li class="fields">
+                  <div class="field">
+                     <label for="billing:city" class="required"><em>*</em>Cidade</label>
+                     <div class="input-box">
+                        <input title="Cidade" name="cidade" class="input-text  required-entry" id="billing:city" value="{$address.descity}" type="text">
+                     </div>
+                  </div>
+                  <div class="field">
+                     <label for="billing:region_id" class="required"><em>*</em>Estado</label>
+                     <div class="input-box">
+                        <select id="billing:region_id" name="billing[region_id]" title="Estado" class="validate-select required-entry" style="" defaultvalue="">
+                           <option value="">Selecione</option>
+                           <option value="485" title="Acre">Acre</option>
+                           <option value="486" title="Alagoas">Alagoas</option>
+                           <option value="487" title="Amapá">Amapá</option>
+                           <option value="488" title="Amazonas">Amazonas</option>
+                           <option value="489" title="Bahia">Bahia</option>
+                           <option value="490" title="Ceará">Ceará</option>
+                           <option value="491" title="Espírito Santo">Espírito Santo</option>
+                           <option value="492" title="Goiás">Goiás</option>
+                           <option value="493" title="Maranhão">Maranhão</option>
+                           <option value="494" title="Mato Grosso">Mato Grosso</option>
+                           <option value="495" title="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                           <option value="496" title="Minas Gerais">Minas Gerais</option>
+                           <option value="497" title="Pará">Pará</option>
+                           <option value="498" title="Paraíba">Paraíba</option>
+                           <option value="499" title="Paraná">Paraná</option>
+                           <option value="500" title="Pernambuco">Pernambuco</option>
+                           <option value="501" title="Piauí">Piauí</option>
+                           <option value="502" title="Rio de Janeiro">Rio de Janeiro</option>
+                           <option value="503" title="Rio Grande do Norte">Rio Grande do Norte</option>
+                           <option value="504" title="Rio Grande do Sul">Rio Grande do Sul</option>
+                           <option value="505" title="Rondônia">Rondônia</option>
+                           <option value="506" title="Roraima">Roraima</option>
+                           <option value="507" title="Santa Catarina">Santa Catarina</option>
+                           <option value="508" title="São Paulo">São Paulo</option>
+                           <option value="509" title="Sergipe">Sergipe</option>
+                           <option value="510" title="Tocantins">Tocantins</option>
+                           <option value="511" title="Distrito Federal">Distrito Federal</option>
+                        </select>
+                        <script type="text/javascript">
+                           //<![CDATA[
+                           $('billing:region_id').setAttribute('defaultValue',  "");
+                           //]]>
+                        </script>
+                        <input id="billing:region" name="billing[region]" value="" title="Estado" class="input-text required-entry" style="display:none;" type="text">
+                     </div>
+                  </div>
+               </li>
+               <li class="wide">
+                  <label for="billing:country_id" class="required"><em>*</em>País</label>
+                  <div class="input-box">
+                     <select name="billing[country_id]" id="billing:country_id" class="validate-select" title="País">
+                        <option value=""> </option>
+                        <option value="BR" selected="selected">Brasil</option>
+                     </select>
+                  </div>
+               </li>
+               <li class="osc-title">Endereço de Entrega</li>
+               <li class="control">
+                  <label for="billing:use_for_shipping"> <input name="billing[use_for_shipping]" value="1" title="Enviar para o mesmo endereço" id="billing:use_for_shipping" checked="checked" class="checkbox" type="checkbox">Enviar para o mesmo endereço</label>
+               </li>
+            </div>
+         </div>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+
+       <!-- Formas de entregas -->
+         <div class="opc">
+            <div class="step-title">
+               <span class="onestepcheckout-number">2</span>
+               <h2>FORMA ENTREGA</h2>
+            </div>
+            <dt id="correios">Correios</dt>
+              <div class="radio">
+                <label><input type="radio" name="pac"> PAC - R$ {function="formatPrice($cart.vlfreight)"} {if="$cart.nrdays >= 0"}
+                 <small> Em média: {$cart.nrdays} dia(s)</small> {/if}</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="sedex"> SEDEX - R$ {function="formatPrice($cart.vlfreight)"} {if="$cart.nrdays >= 0"} <small>Em média {$cart.nrdays} dia(s)</small>{/if}</label>
+              </div> 
+
+              <dt id="retira">Retirar Pessoalmente</dt>
+
+              <label id="retira"><input type="radio" name="sedex"> R$ 0,00 </label>
+         </div>
+         <!-- Formas de Pagamento -->
+         <div class="opc">
+            <div class="step-title">
+               <span class="onestepcheckout-number">3</span>
+               <h2>FORMA PAGAMENTO</h2>
+            </div>
+            <div class="pagamentos">
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+               <form>
+                  <ul>
+                     <li>
+                        <input type="radio" id="div1" name="consulta" checked value="1">
+                        <label for="f-option">Cartão de Crédito</label>
+                        <div class="cartao" id="m1">
+                             <div class="field" id="cardBrand">
+    <label for="cardNumber">N&uacute;mero</label>
+    <input type="text" name="cardNumber" id="cardNumber" class="cardDatainput" />
+   </div>
+   
+   <div class="field">
+    <label for="cardExpirationMonth">Data de Vencimento (99/9999)</label>
+    <input type="text" name="cardExpirationMonth" id="cardExpirationMonth" class="cardDatainput month" maxlength="2" /> /
+    <input type="text" name="cardExpirationYear" id="cardExpirationYear" class="cardDatainput year" maxlength="4" />
+   </div>
+   
+   <div class="field">
+    <label for="cardCvv">C&oacute;digo de Seguran&ccedil;a</label>
+    <input type="text" name="cardCvv" id="cardCvv" maxlength="5" class="cardDatainput" />
+   </div>
+
+
                         </div>
-                        <label class="state" for="state">State</label>
-                    </div>
-                </div>
-                <div>
-                    <input type="text" name="zip" value="" id="zip" placeholder="Zip Code" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Zip Code" />
-                    <label for="zip">Zip Code</label>
-                </div>
-                <div>
-                    <div class="country_options">
-                        <div class="select">
-                            <select id="country">
-                                <option value="1">United States</option>
-                                <option value="2">United Kingdom</option>
-                                <option value="3">Uganda</option>
-                                <option value="4">Etc.</option>
-                            </select>
+                     </li>
+                     <li>
+                        <input type="radio" id="div2" name="consulta" value="2">
+                        <label for="s-option">Boleto</label>
+                        <div class="cartao" id="m2" hidden>
+                           <img src="https://www.pulsation.com.br/skin/frontend/base/default/images/gerencianet/icon-boleto.png">
+                           <p> O Boleto bancário será gerado assim que a compra for finalizada.</p>
+                           <label for="pagseguropro_boleto_cpf" class="required"><em>*</em>Seu CPF</label>
+                           <input id="pagseguropro_boleto_cpf" name="payment[pagseguropro_boleto_cpf]" title="CPF" class="input-text required-entry validate-digits" value="" type="text">
                         </div>
-                        <label class="country" for="country">Country</label>
-                    </div>
-                </div>
-                <div>
-                    <input type="checkbox" />
-                    <label class="same" for="same_as_shipping">Same As Shipping Address</label><span></span>
-                </div>
-            </form>
-            <a class="continue" href="#">Continue</a>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="step" id="step3">
-            <div class="number">
-                <span>3</span>
-            </div>
-            <div class="title">
-                <p id="onestepcheckout-title-description">Shipping Information</p>
-            </div>
-            <div class="modify">
-                <i class="fa fa-plus-circle"></i>
-            </div>
-        </div>
-        <div class="content" id="shipping">
-            <form action="" method="" name="">
-                <div>
-                    <input type="radio" id="shipping_1" value="1" />
-                    <label for="shipping_1"> Standard Shipping <span class="price">$4.00</span></label>
-                </div>
-                <p>
-                    <input type="radio" id="shipping_2" value="2" />
-                    <label for="shipping_2"> Express Shipping <span class="price">$8.00</span></label>
-                </p>
-                <p>
-                    <input type="radio" id="shipping_3" value="3" />
-                    <label for="shipping_3"> Overnight Shipping <span class="price">$12.00</span></label>
-                </p>
-            </form>
-            <a class="continue" href="#">Continue</a>
-        </div>
-        <div class="step" id="step4">
-            <div class="number">
-                <span>4</span>
-            </div>
-            <div class="title">
-                <p id="onestepcheckout-title-description">Payment Information</p>
-            </div>
-            <div class="modify">
-                <i class="fa fa-plus-circle"></i>
-            </div>
-        </div>
-        <div class="content" id="payment">
-            <div class="left">
-                <form class="go-right">
-                    <div>
-                        <input type="text" name="card_number" value="" id="card_number" placeholder="xxxx-xxxx-xxxx-xxxx" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Number" />
-                        <label for="card_number">Card Number</label>
-                    </div>
-                    <div>
-                        <div class="expiry">
-                            <div class="month_select">
-                                <select name="exp_month" value="" id="exp_month" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
-                                    <option value="1">01 (Jan)</option>
-                                    <option value="2">02 (Feb)</option>
-                                    <option value="3">03 (Mar)</option>
-                                    <option value="4">04 (Apr)</option>
-                                    <option value="5">05 (May)</option>
-                                    <option value="6">06 (Jun)</option>
-                                    <option value="7">07 (Jul)</option>
-                                    <option value="8">08 (Aug)</option>
-                                    <option value="9">09 (Sep)</option>
-                                    <option value="10">10 (Oct)</option>
-                                    <option value="11">11 (Nov)</option>
-                                    <option value="12">12 (Dec)</option>
-                                </select>
-                            </div>
-                            <div class="year_select">
-                                <select name="exp_year" value="" id="exp_year" placeholder="" data-trigger="change" data-type="name" data-required="true" data-error-message="Enter Your Credit Card Expiration Date">
-                                    <option value="1">14 </option>
-                                    <option value="2">15 (Feb)</option>
-                                    <option value="3">16 (Mar)</option>
-                                    <option value="4">17 (Apr)</option>
-                                    <option value="5">18 (May)</option>
-                                    <option value="6">19 (Jun)</option>
-                                    <option value="7">20 (Jul)</option>
-                                    <option value="8">22 (Aug)</option>
-                                    <option value="9">23 (Sep)</option>
-                                    <option value="10">24 (Oct)</option>
-                                    <option value="11">25 (Nov)</option>
-                                    <option value="12">26 (Dec)</option>
-                                </select>
-                            </div>
-                            <label class="exp_date" for="Exp_Date">Exp Date</label>
+                     </li>
+                     <li>
+                        <input type="radio" id="div3" name="consulta" value="3">
+                        <label for="t-option">Transferencia </label>
+                        <div class="cartao" id="m3" hidden>
+                          <p> Favorecido: Maneiraweb Soluções Web</p>
+
+                           <p>Banco Itau S/A.</p>
+                           <p> Ag: 6469</p>
+                           <p>C/P: 16690-3 </p>
                         </div>
-                    </div>
-                    <div class="sec_num">
-                        <div>
-                            <input type="text" name="ccv" value="" id="ccv" placeholder="123" data-trigger="change" data-validation-minlength="3" data-type="name" data-required="true" data-error-message="Enter Your Card Security Code" />
-                            <label for="ccv">Security Code</label>
-                        </div>
-                    </div>
-                </form>
+                     </li>
+                  </ul>
+               </form>
             </div>
-            <div class="right">
-                <div class="accepted">
-                    <span><img src="https://i.imgur.com/Z5HVIOt.png"></span>
-                    <span><img src="https://i.imgur.com/Le0Vvgx.png"></span>
-                    <span><img src="https://i.imgur.com/D2eQTim.png"></span>
-                    <span><img src="https://i.imgur.com/Pu4e7AT.png"></span>
-                    <span><img src="https://i.imgur.com/ewMjaHv.png"></span>
-                    <span><img src="https://i.imgur.com/3LmmFFV.png"></span>
-                </div>
-                <div class="secured">
-                    <img class="lock" src="https://i.imgur.com/hHuibOR.png">
-                    <p class="security info">What, well you mean like a date? Doc? Am I to understand you're still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in a row.</p>
-                </div>
+         </div>
+      </div>
+      <div class="col-xs-6 col-sm-4">
+         <div class="opc">
+            <div class="step-title">
+               <span class="onestepcheckout-number">4</span>
+               <h2>REVISÃO DO PEDIDO</h2>
             </div>
-            <a class="continue" href="#">Continue</a>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="step" id="step5">
-            <div class="number">
-                <span>5</span>
-            </div>
-            <div class="title">
-                <p id="onestepcheckout-title-description">Finalize Order</p>
-            </div>
-            <div class="modify">
-                <i class="fa fa-plus-circle"></i>
-            </div>
-        </div>
-        <div class="content" id="final_products">
-            <div class="left" id="ordered">
-                <div class="products">
-                    <div class="product_image">
-                        <img src="https://i.imgur.com/YwqxBXc.jpg" />
-                    </div>
-                    <div class="product_details">
-                        <span class="product_name">Cherry Bikini</span>
-                        <span class="quantity">1</span>
-                        <span class="price">$45.00</span>
-                    </div>
-                </div>
-                <div class="totals">
-                    <span class="subtitle">Subtotal <span id="sub_price">$45.00</span></span>
-                    <span class="subtitle">Tax <span id="sub_tax">$2.00</span></span>
-                    <span class="subtitle">Shipping <span id="sub_ship">$4.00</span></span>
-                </div>
-                <div class="final">
-                    <span class="title">Total <span id="calculated_total">$51.00</span></span>
-                </div>
-            </div>
-            <div class="right" id="reviewed">
-                <div class="billing">
-                    <span class="title">Billing:</span>
-                    <div class="address_reviewed">
-                        <span class="name">John Smith</span>
-                        <span class="address">123 Main Street</span>
-                        <span class="location">Everytown, USA, 12345</span>
-                        <span class="phone">(123)867-5309</span>
-                    </div>
-                </div>
-                <div class="shipping">
-                    <span class="title">Shipping:</span>
-                    <div class="address_reviewed">
-                        <span class="name">John Smith</span>
-                        <span class="address">123 Main Street</span>
-                        <span class="location">Everytown, USA, 12345</span>
-                        <span class="phone">(123)867-5309</span>
-                    </div>
-                </div>
-                <div class="payment">
-                    <span class="title">Payment:</span>
-                    <div class="payment_reviewed">
-                        <span class="method">Visa</span>
-                        <span class="number_hidden">xxxx-xxxx-xxxx-1111</span>
-                    </div>
-                </div>
-                <div id="complete">
-                    <a class="big_button" id="complete" href="#">Complete Order</a>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- class step1 -->
-    </div>
+         </div>
+         <div class="pull-right">
+            <input type="submit" value="Finalizar Compra" name="proceed" class="btn btn-secondary btn-lg">
+         </div>
+      </div>
+   </div>
 </div>
+<script type="text/javascript">
+   $('input:radio[name="consulta"]').change(function() {
+          if ($(this).val() == 1) {
+            $("#m1").attr("hidden", false);
+            $(this).attr("checked", true);
+            
+            $("#m2").attr("hidden", true);
+            $(this).attr("checked", true);
+   
+            $("#m3").attr("hidden", true);
+            $(this).attr("checked", true);
+            
+          } else if ($(this).val() == 2) {
+            $("#m2").attr("hidden", false);
+            $(this).attr("checked", true);
+   
+            $("#m3").attr("hidden", true);
+            $(this).attr("checked", true);
+            
+            $("#m1").attr("hidden", true);
+            $(this).attr("checked", true);
+          }
+   
+          else if ($(this).val() == 3) {
+            $("#m3").attr("hidden", false);
+            $(this).attr("checked", true);
+   
+            $("#m2").attr("hidden", true);
+            $(this).attr("checked", true);
+            
+            $("#m1").attr("hidden", true);
+            $(this).attr("checked", true);
+          }
+        });
+</script>
+

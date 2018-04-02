@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?> 
+ 
 <div class="product-big-title-area">
     <div class="container">
         <div class="row">
@@ -17,14 +17,11 @@
         <div class="row">                
             <div class="col-md-6">
                 
-                <?php if( $error != '' ){ ?>
-
+                {if="$error != ''"}
                 <div class="alert alert-danger">
-                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-
+                    {$error}
                 </div>
-                <?php } ?>
-
+                {/if}
 
                 <form action="/login" id="login-form-wrap" class="login" method="post">
                     <h2>Acessar</h2>
@@ -52,31 +49,28 @@
             </div>
             <div class="col-md-6">
                 
-                <?php if( $ErrorRegister != '' ){ ?>
-
+                {if="$ErrorRegister != ''"}
                 <div class="alert alert-danger">
-                    <?php echo htmlspecialchars( $ErrorRegister, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-
+                    {$ErrorRegister}
                 </div>
-                <?php } ?>
-
+                {/if}
 
                 <form id="register-form-wrap" action="/register" class="register" method="post">
                     <h2>Criar conta</h2>
                     <p class="form-row form-row-first">
                         <label for="nome">Nome Completo <span class="required">*</span>
                         </label>
-                        <input type="text" id="nome" name="name" class="form-control" value="<?php echo htmlspecialchars( $registerValues["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <input type="text" id="nome" name="name" class="form-control" value="{$registerValues.name}">
                     </p>
                     <p class="form-row form-row-first">
                         <label for="email">E-mail <span class="required">*</span>
                         </label>
-                        <input type="email" id="email" name="email" class="form-control" value="<?php echo htmlspecialchars( $registerValues["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <input type="email" id="email" name="email" class="form-control" value="{$registerValues.email}">
                     </p>
                     <p class="form-row form-row-first">
                         <label for="phone">Telefone
                         </label>
-                        <input type="text" id="phone" name="phone" class="form-control" value="<?php echo htmlspecialchars( $registerValues["phone"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                        <input type="text" id="phone" name="phone" class="form-control" value="{$registerValues.phone}">
                     </p>
                     <p class="form-row form-row-last">
                         <label for="senha">Senha <span class="required">*</span>

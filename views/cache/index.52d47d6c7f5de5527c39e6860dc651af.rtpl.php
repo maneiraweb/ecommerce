@@ -164,7 +164,7 @@
 		<div class="container">
 			<div class="sec-title p-b-60">
 				<h3 class="m-text5 t-center">
-					Featured Products
+					Produtos em Destaque
 				</h3>
 			</div>
 

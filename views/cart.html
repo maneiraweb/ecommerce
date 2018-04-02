@@ -19,15 +19,15 @@
 							<th class="column-4 p-l-70">Quantity</th>
 							<th class="column-5">Total</th>
 						</tr>
-
+						{loop="$products"}
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="/res/site/images/images/item-10.jpg" alt="IMG-PRODUCT">
+								<a href="/products/{$value.desurl}"><img src="{$value.desphoto}" alt="IMG-PRODUCT"></a>
 								</div>
 							</td>
-							<td class="column-2">Men Tshirt</td>
-							<td class="column-3">$36.00</td>
+							<td class="column-2"><a href="/products/{$value.desurl}">{$value.desproduct}</a> </td>
+							<td class="column-3">R${function="formatPrice($value.vlprice)"}</td>
 							<td class="column-4">
 								<div class="flex-w bo5 of-hidden w-size17">
 									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
@@ -41,32 +41,10 @@
 									</button>
 								</div>
 							</td>
-							<td class="column-5">$36.00</td>
+							<td class="column-5">R${function="formatPrice($value.vltotal)"}</td>
 						</tr>
-
-						<tr class="table-row">
-							<td class="column-1">
-								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="/res/site/images/images/item-05.jpg" alt="IMG-PRODUCT">
-								</div>
-							</td>
-							<td class="column-2">Mug Adventure</td>
-							<td class="column-3">$16.00</td>
-							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-									</button>
-
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product2" value="1">
-
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-									</button>
-								</div>
-							</td>
-							<td class="column-5">$16.00</td>
-						</tr>
+						{/loop}
+						
 					</table>
 				</div>
 			</div>
@@ -106,50 +84,49 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						$39.00
+						R${function="formatPrice($cart.vlsubtotal)"}
 					</span>
 				</div>
 
 				<!--  -->
-				<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
+			<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
+				<form id="form-pesquisa-repasse" method="post" class="" onsubmit="submitForm(this); return false;">
 					<span class="s-text18 w-size19 w-full-sm">
-						Shipping:
+						Calcular Frete
 					</span>
 
 					<div class="w-size20 w-full-sm">
 						<p class="s-text8 p-b-23">
-							There are no shipping methods available. Please double check your address, or contact us if you need any help.
+							Informe o CEP para entrega:
 						</p>
 
 						<span class="s-text19">
-							Calculate Shipping
+							Informe o CEP para entrega:
 						</span>
 
-						<div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
-							<select class="selection-2" name="country">
-								<option>Select a country...</option>
-								<option>US</option>
-								<option>UK</option>
-								<option>Japan</option>
-							</select>
-						</div>
-
-						<div class="size13 bo4 m-b-12">
-						<input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="state" placeholder="State /  country">
-						</div>
-
+						
 						<div class="size13 bo4 m-b-22">
-							<input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode" placeholder="Postcode / Zip">
+							<input class="sizefull s-text7 p-l-15 p-r-15" type="text" id="cep" name="zipcode" placeholder="00000-000" value="{$cart.deszipcode}">
 						</div>
 
 						<div class="size14 trans-0-4 m-b-10">
 							<!-- Button -->
-							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-								Update Totals
+							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" formmethod="post" formaction="/cart/freight">
+								Calcular
 							</button>
 						</div>
+						<div class="response">
+							<label><input type="radio" name="pac"> PAC - R$ {function="formatPrice($cart.vlfreight)"} {if="$cart.nrdays >= 0"}
+                 			<small> Em média: {$cart.nrdays} dia(s)</small> {/if}</label>
+
+                 			<label><input type="radio" name="sedex"> SEDEX - R$ {function="formatPrice($cart.vlfreight)"} {if="$cart.nrdays >= 0"} <small>Em média {$cart.nrdays} dia(s)</small>{/if}</label>
+
+
+
+						</div>
 					</div>
-				</div>
+				</form>
+			</div>
 
 				<!--  -->
 				<div class="flex-w flex-sb-m p-t-26 p-b-30">
@@ -158,14 +135,14 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						$39.00
+						R${function="formatPrice($cart.vltotal)"}
 					</span>
 				</div>
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
-					<button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Proceed to Checkout
+					<button type="submit" data-value="Place order" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+						Continuar
 					</button>
 				</div>
 			</div>

@@ -107,7 +107,7 @@ $app->get("/checkout", function(){
   // if(isset($_GET['zipcode'])) {
   //   $_GET['zipcode'] = $cart->getdeszipcode();
   // }
-
+ 
   if(isset($_GET['zipcode'])) {   
     $address->loadFromCEP($_GET['zipcode']);
     $cart->setdeszipcode($_GET['zipcode']);
