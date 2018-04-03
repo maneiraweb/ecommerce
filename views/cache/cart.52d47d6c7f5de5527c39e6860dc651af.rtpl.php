@@ -14,16 +14,16 @@
 					<table class="table-shopping-cart">
 						<tr class="table-head">
 							<th class="column-1"></th>
-							<th class="column-2">Product</th>
-							<th class="column-3">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
+							<th class="column-2">Produto</th>
+							<th class="column-3">Preço</th>
+							<th class="column-4 p-l-70">Quantidade</th>
 							<th class="column-5">Total</th>
 						</tr>
 						<?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
-								<a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="IMG-PRODUCT"></a>
+									<img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="IMG-PRODUCT">
 								</div>
 							</td>
 							<td class="column-2"><a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a> </td>
@@ -58,7 +58,7 @@
 					<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 						<!-- Button -->
 						<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-							Apply coupon
+							Aplicar
 						</button>
 					</div>
 				</div>
@@ -66,7 +66,7 @@
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->
 					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Update Cart
+						Atualizar Valores
 					</button>
 				</div>
 			</div>
@@ -74,7 +74,8 @@
 			<!-- Total -->
 			<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 				<h5 class="m-text20 p-b-24">
-					Cart Totals
+					Total do Pedido
+
 				</h5>
 
 				<!--  -->
@@ -89,44 +90,34 @@
 				</div>
 
 				<!--  -->
-			<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-				<form id="form-pesquisa-repasse" method="post" class="" onsubmit="submitForm(this); return false;">
+				<div class="flex-w flex-sb bo10 p-t-15 p-b-20">
 					<span class="s-text18 w-size19 w-full-sm">
-						Calcular Frete
+						FRETE
+
 					</span>
 
 					<div class="w-size20 w-full-sm">
 						<p class="s-text8 p-b-23">
 							Informe o CEP para entrega:
 						</p>
-
-						<span class="s-text19">
-							Informe o CEP para entrega:
-						</span>
-
-						
 						<div class="size13 bo4 m-b-22">
-							<input class="sizefull s-text7 p-l-15 p-r-15" type="text" id="cep" name="zipcode" placeholder="00000-000" value="<?php echo htmlspecialchars( $cart["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+							<input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode" placeholder="CEP">
 						</div>
 
 						<div class="size14 trans-0-4 m-b-10">
 							<!-- Button -->
-							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" formmethod="post" formaction="/cart/freight">
+							<button formmethod="post" formaction="/cart/freight" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 								Calcular
 							</button>
 						</div>
 						<div class="response">
 							<label><input type="radio" name="pac"> PAC - R$ <?php echo formatPrice($cart["vlfreight"]); ?> <?php if( $cart["nrdays"] >= 0 ){ ?>
-                 			<small> Em média: <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small> <?php } ?></label>
+							<small> Em média: <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small> <?php } ?></label>
 
-                 			<label><input type="radio" name="sedex"> SEDEX - R$ <?php echo formatPrice($cart["vlfreight"]); ?> <?php if( $cart["nrdays"] >= 0 ){ ?> <small>Em média <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small><?php } ?></label>
-
-
-
+							<label><input type="radio" name="sedex"> SEDEX - R$ <?php echo formatPrice($cart["vlfreight"]); ?> <?php if( $cart["nrdays"] >= 0 ){ ?> <small>Em média <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small><?php } ?></label>
 						</div>
 					</div>
-				</form>
-			</div>
+				</div>
 
 				<!--  -->
 				<div class="flex-w flex-sb-m p-t-26 p-b-30">
@@ -141,8 +132,8 @@
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
-					<button type="submit" data-value="Place order" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Continuar
+					<button type="submit" name="proceed" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+						Finalizar Compra
 					</button>
 				</div>
 			</div>
