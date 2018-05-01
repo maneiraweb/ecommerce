@@ -1,11 +1,11 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-	<title>Home</title>
+	<title>ManeiraWeb Ecommerce</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/res/site/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/res/site/images/icons/favi.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/res/site/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -47,13 +47,11 @@
 				<div class="topbar-social">
 					<a href="#" class="topbar-social-item fa fa-facebook"></a>
 					<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
 					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
 				</div>
 
 				<span class="topbar-child1">
-					Free shipping for standard order over $100
+					Seja Bem Vindo  <?php echo getUserName(); ?>
 				</span>
 
 				<div class="topbar-child2">
@@ -61,19 +59,14 @@
 						vendas@maneiraweb.com.br
 					</span>
 
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
-					</div>
+					
 				</div>
 			</div>
 
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="/" class="logo">
-					<img src="/res/site/images/icons/logo.png" alt="IMG-LOGO">
+					<img src="/res/site/images/icons/logo_maneiraweb.png" alt="Maneiraweb">
 				</a>
 
 				<!-- Menu -->
@@ -85,7 +78,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="/categories">Celulares</a>
 							</li>
 
 							<li class="sale-noti">
@@ -101,11 +94,11 @@
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.html">Sobre</a>
 							</li>
 
 							<li>
-								<a href="contact">Contact</a>
+								<a href="contact">Contatos</a>
 							</li>
 						</ul>
 					</nav>
@@ -125,7 +118,7 @@
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
-							<?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>	
+							<?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
 							<ul class="header-cart-wrapitem">
 								
 								<li class="header-cart-item">
@@ -134,22 +127,22 @@
 									</div>
 
 									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
+										<a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="header-cart-item-name">
 											<?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 										</a>
 
 										<span class="header-cart-item-info">
-											1 x <?php echo formatPrice($value1["vlprice"]); ?>
+											1 x R$<?php echo formatPrice($value1["vlprice"]); ?>
 										</span>
 									</div>
 								</li>
 								
 							</ul>
-							<?php } ?>
+						
 							<div class="header-cart-total">
-							Total:R$
+							Total:R$<?php echo getCartVlSubTotal(); ?>
 							</div>
-							
+							<?php } ?>
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-	<title>Home</title>
+	<title>ManeiraWeb Ecommerce</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/res/site/images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="/res/site/images/icons/favi.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/res/site/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -47,13 +47,11 @@
 				<div class="topbar-social">
 					<a href="#" class="topbar-social-item fa fa-facebook"></a>
 					<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
 					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
 				</div>
 
 				<span class="topbar-child1">
-					Free shipping for standard order over $100
+					Seja Bem Vindo  {function="getUserName()"}
 				</span>
 
 				<div class="topbar-child2">
@@ -61,19 +59,14 @@
 						vendas@maneiraweb.com.br
 					</span>
 
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
-					</div>
+					
 				</div>
 			</div>
 
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="/" class="logo">
-					<img src="/res/site/images/icons/logo.png" alt="IMG-LOGO">
+					<img src="/res/site/images/icons/logo_maneiraweb.png" alt="Maneiraweb">
 				</a>
 
 				<!-- Menu -->
@@ -85,7 +78,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="/categories">Celulares</a>
 							</li>
 
 							<li class="sale-noti">
@@ -101,11 +94,11 @@
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.html">Sobre</a>
 							</li>
 
 							<li>
-								<a href="contact">Contact</a>
+								<a href="contact">Contatos</a>
 							</li>
 						</ul>
 					</nav>
@@ -125,7 +118,7 @@
 
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
-							{loop="$products"}	
+							{loop="$products"}
 							<ul class="header-cart-wrapitem">
 								
 								<li class="header-cart-item">
@@ -134,22 +127,22 @@
 									</div>
 
 									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
+										<a href="/products/{$value.desurl}" class="header-cart-item-name">
 											{$value.desproduct}
 										</a>
 
 										<span class="header-cart-item-info">
-											1 x {function="formatPrice($value.vlprice)"}
+											1 x R${function="formatPrice($value.vlprice)"}
 										</span>
 									</div>
 								</li>
 								
 							</ul>
-							{/loop}
+						
 							<div class="header-cart-total">
-							Total:R$
+							Total:R${function="getCartVlSubTotal()"}
 							</div>
-							
+							{/loop}
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->

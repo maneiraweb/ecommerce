@@ -8,7 +8,6 @@ use \Hcode\Model\User;
 use \Hcode\Model\Order;
 use \Hcode\Model\OrderStatus;
 
-
 $app->get('/', function() {
   $cart = Cart::getFromSession();
 	$products = Product::listAll();
@@ -16,8 +15,7 @@ $app->get('/', function() {
 	$page->setTpl("index", [
 		'products'=>Product::checkList($products),
     'cart'=>$cart->getValues(),
-    'products'=>$cart->getProducts(),
-    'error'=>Cart::getMsgError()
+    'products'=>$cart->getProducts()
 		]);
 });
 
@@ -29,10 +27,21 @@ $app->get('/contact', function() {
 
 });
 
+$app->get('/categories', function() {
+  
+  $products = Product::listAll();
+  $categories = Category::listAll();
+  $page = new Page();
+  $page->setTpl("product", [
+    'products'=>Product::checkList($products),
+    'categories'=> $categories
+    ]);
+});
 
 $app->get("/categories/:idcategory", function($idcategory){
     $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
     $category = new Category();
+    $categories = Category::listAll();
   	$category->get((int)$idcategory);
     $pagination = $category->getProductPage($page);
   	$pages = [];
@@ -45,6 +54,7 @@ $app->get("/categories/:idcategory", function($idcategory){
     $page = new Page();
   	$page->setTpl("category", [
     	'category'=>$category->getValues(),
+      'categories'=> $categories,
     	'products'=>$pagination["data"],
       'pages'=>$pages
     ]);

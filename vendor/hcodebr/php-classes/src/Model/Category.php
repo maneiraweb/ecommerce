@@ -84,7 +84,7 @@ class Category extends Model{
 			}
 		}
 
-		public function getProductPage($page = 1, $itemsPerPage = 3) {
+		public function getProductPage($page = 1, $itemsPerPage = 6) {
 			$start = ($page - 1) * $itemsPerPage;
 			$sql = new Sql();
 			$results = $sql->select("
