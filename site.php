@@ -9,13 +9,10 @@ use \Hcode\Model\Order;
 use \Hcode\Model\OrderStatus;
 
 $app->get('/', function() {
-  $cart = Cart::getFromSession();
 	$products = Product::listAll();
 	$page = new Page();
 	$page->setTpl("index", [
-		'products'=>Product::checkList($products),
-    'cart'=>$cart->getValues(),
-    'products'=>$cart->getProducts()
+		'products'=>Product::checkList($products)
 		]);
 });
 

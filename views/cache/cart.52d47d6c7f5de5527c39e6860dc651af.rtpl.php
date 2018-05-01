@@ -4,14 +4,10 @@
 			Cart
 		</h2>
 	</section>
-
+<form action="/checkout">
+			
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">
-					<?php if( $error != '' ){ ?>
-                    <div class="alert alert-danger" role="alert">
-                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
-                    </div>
-					<?php } ?>
 		<div class="container">
 			<!-- Cart item -->
 			<div class="container-table-cart pos-relative">
@@ -94,7 +90,7 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						R$ <?php echo formatPrice($cart["vlsubtotal"]); ?>
+						R$<?php echo formatPrice($cart["vlsubtotal"]); ?>
 					</span>
 				</div>
 
@@ -110,20 +106,26 @@
 							Informe o CEP para entrega:
 						</p>
 						<div class="size13 bo4 m-b-22">
-							<input class="sizefull s-text7 p-l-15 p-r-15" placeholder="00000-000" value="<?php echo htmlspecialchars( $cart["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" id="cep" class="input-text" name="zipcode">
+							<input class="sizefull s-text7 p-l-15 p-r-15" value="<?php echo htmlspecialchars( $cart["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" type="text"  name="zipcode"  placeholder="00000-000">
 						</div>
 
 						<div class="size14 trans-0-4 m-b-10">
 							<!-- Button -->
-							 <input type="submit" formmethod="post" formaction="/cart/freight" value="CÁLCULAR" class="button">
+							<button formmethod="post" formaction="/cart/freight" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+								Calcular
+							</button>
 						</div>
 						<div class="response">
-							R$<?php echo formatPrice($cart["vlfreight"]); ?><?php if( $cart["nrdays"] > 0 ){ ?> <small>prazo de <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small><?php } ?>
 							<label><input type="radio" name="pac"> PAC - R$ <?php echo formatPrice($cart["vlfreight"]); ?> <?php if( $cart["nrdays"] >= 0 ){ ?>
 							<small> Em média: <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small> <?php } ?></label>
 
 							<label><input type="radio" name="sedex"> SEDEX - R$ <?php echo formatPrice($cart["vlfreight"]); ?> <?php if( $cart["nrdays"] >= 0 ){ ?> <small>Em média <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small><?php } ?></label>
 						</div>
+						<?php if( $error != '' ){ ?>
+			                <div class="alert alert-danger" role="alert">
+			                <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+			                </div>
+						<?php } ?>
 					</div>
 				</div>
 
@@ -144,7 +146,9 @@
 						Finalizar Compra
 					</button>
 				</div>
+			</form>
 			</div>
+		
 		</div>
 	</section>
 
