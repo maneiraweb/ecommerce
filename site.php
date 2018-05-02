@@ -68,13 +68,13 @@ $app->get("/products/:desurl", function($desurl){
 $app->get("/cart", function(){
 	$cart = Cart::getFromSession();
   	$page = new Page();
-  	// var_dump($cart->getValues());
-  	// exit();
 	$page->setTpl("cart",[
     'cart'=>$cart->getValues(),
+    //'nCdServico'=>$nCdServico->getValues(),
     'products'=>$cart->getProducts(),
     'error'=>Cart::getMsgError()
     ]);
+  
 });
 $app->get("/cart/:idproduct/add", function($idproduct) {
   $product = new Product();

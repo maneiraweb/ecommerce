@@ -92,9 +92,6 @@ class Cart extends Model{
 	public function getProducts() {
 		$sql = new Sql();
 		
-		// var_dump("SELECT b.idproduct, b.desproduct, b.vlprice, b.vlwidth, .b.vlheight, b.vllength, b.vlweight, b.desurl, COUNT(*) AS nrqtd, SUM(b.vlprice) AS vltotal FROM tb_cartsproducts a INNER JOIN tb_products b ON a.idproduct = b.idproduct WHERE a.idcart = 4 AND a.dtremoved IS NULL GROUP BY b.idproduct, b.desproduct, b.vlprice, b.vlwidth, .b.vlheight, b.vllength, b.vlweight, b.desurl ORDER BY b.desproduct");
-		// exit();
-		
 		$rows = $sql->select("
 			SELECT b.idproduct, b.desproduct, b.vlprice, b.vlwidth, .b.vlheight, b.vllength, b.vlweight, b.desurl, COUNT(*) AS nrqtd, 
 			SUM(b.vlprice) AS vltotal
@@ -135,7 +132,7 @@ class Cart extends Model{
 			$qs = http_build_query([
 				'nCdEmpresa'=>'',
 				'sDsSenha'=>'',
-				'nCdServico'=>'40010',
+				'nCdServico'=>$nCdServico['nCdServico']='40010,41106',
 				'sCepOrigem'=>'03381140',
 				'sCepDestino'=>$nrzipcode,
 				'nVlPeso'=>$totals['vlweight'],
@@ -144,15 +141,17 @@ class Cart extends Model{
 				'nVlAltura'=>$totals['vlheight'],
 				'nVlLargura'=>$totals['vlwidth'],
 				'nVlDiametro'=>'0',
-				'sCdMaoPropria'=>'S',
+				'sCdMaoPropria'=>'N',
 				'nVlValorDeclarado'=>$totals['vlprice'],
-				'sCdAvisoRecebimento'=>'S'
+				'sCdAvisoRecebimento'=>'N'
 			]);
 			
 			$xml = simplexml_load_file("http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx/CalcPrecoPrazo?".$qs);
-			// echo json_encode($xml);
-			// exit();
+			 // echo json_encode($xml);
+			 //exit();
+
 			$result = $xml->Servicos->cServico;
+
 			if($result->MsgErro != ''){
 				Cart::setMsgError($result->MsgErro);
 			} else {
