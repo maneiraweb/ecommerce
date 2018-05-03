@@ -6,8 +6,6 @@ use \Hcode\PageAdmin;
 use \Hcode\Model\User;
 use \Hcode\Model\Address;
 
-use \Hcode\Model\Delivery;
-
 $app->get("/admin/delivery-settings", function() {
 	User::verifyLogin();
 	  $address = new Address();
@@ -34,5 +32,10 @@ $app->get("/admin/delivery-settings", function() {
 	
 });
 
+$app->get('/admin/delivery-methods', function() { 
+	User::verifyLogin(); 
+	$page = new PageAdmin();
+	$page->setTpl("delivery-methods");
+});
 
 ?>

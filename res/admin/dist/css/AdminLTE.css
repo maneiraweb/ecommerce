@@ -4940,3 +4940,19 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+ p.note {
+  margin: 0;
+  padding: 0 0 0 13px;
+  background: url(images/note_bg.gif) 1px 6px no-repeat;
+  font-size: 11px;
+  color: #f4f4f4;
+}
+
+.note {
+  color: #fff222 !important;
+  margin: 0;
+  padding: 0 0 0 13px;
+  background: url(images/note_bg.gif) 1px 6px no-repeat;
+  font-size: 11px;
+  
+}

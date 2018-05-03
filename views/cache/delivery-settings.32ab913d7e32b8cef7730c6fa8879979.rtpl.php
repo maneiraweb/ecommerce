@@ -63,16 +63,6 @@
 					
 					<input type="submit" value="Atualizar CEP" id="place_order" class="btn btn-info" formaction="/admin/delivery-settings" formmethod="get">
 
-
-
-
-
-					<!--
-                     <input type="text" class="form-control" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" nome="zipcode" placeholder="00000-000" style="width: 15%;" >
-
-                      <input type="submit" value="Atualizar CEP" id="place_order" class="btn btn-info" formaction="/admin/delivery-settings" formmethod="get">
-
-                    -->  
                   </div>
 					<div class="form-group">
                      <label>Endereço</label>

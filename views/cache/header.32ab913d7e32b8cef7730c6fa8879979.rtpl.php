@@ -293,7 +293,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="/admin/delivery-settings">Configurações de Entrega</a></li>
-            <li><a href="#">Formas de Entrega</a></li>
+            <li><a href="/admin/delivery-methods">Formas de Entrega</a></li>
             <li><a href="#">API do Google</a></li>
             <li><a href="#">Formas de Pagamento</a></li>
           </ul>

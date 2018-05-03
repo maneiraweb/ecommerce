@@ -6755,3 +6755,11 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.note {
+  color: #fff222 !important;
+  margin: 0;
+  padding: 0 0 0 13px;
+  background: url(images/note_bg.gif) 1px 6px no-repeat;
+  font-size: 11px;
+  
+}
