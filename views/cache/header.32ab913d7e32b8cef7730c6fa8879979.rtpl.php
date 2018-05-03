@@ -298,6 +298,20 @@ desired effect
             <li><a href="#">Formas de Pagamento</a></li>
           </ul>
         </li>
+        <!-- Configurações de Sistemas -->
+        <li class="treeview">
+          <a href="#"><i class="fa fa-align-justify"></i> <span>Sistemas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">Minha Conta</a></li>
+            <li><a href="#">Link in level 2</a></li>
+          </ul>
+        </li>
+
+
         <li class="treeview">
           <a href="#"><i class="fa fa-align-justify"></i> <span>Multilevel</span>
             <span class="pull-right-container">

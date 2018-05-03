@@ -1,6 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?>
-
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -18,7 +16,7 @@
    <div class="col-md-12">
       <div class="box box-primary">
          <div class="box-body no-padding">
-            <!-- SELECT2 EXAMPLE -->
+           
             <div class="box box-default">
                <div class="box-header with-border">
                   <h3 class="box-title">Origem do Envio</h3>
@@ -29,6 +27,12 @@
                </div>
                <!-- /.box-header -->
                <div class="box-body">
+
+									<?php if( $error != '' ){ ?>
+									<div class="alert alert-danger">
+										<?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+									</div>
+									<?php } ?>
                   <div class="row">
                      <div class="col-md-6">
                      	 
@@ -36,14 +40,14 @@
                            <label>País</label>
 
                            <select class="form-control select2" style="width: 70%;">
-                             <?php $counter1=-1;  if( isset($pais) && ( is_array($pais) || $pais instanceof Traversable ) && sizeof($pais) ) foreach( $pais as $key1 => $value1 ){ $counter1++; ?>	 <option selected="selected"><?php echo htmlspecialchars( $value1["SL_NOME"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option><?php } ?>
+                             <option name="descountry"  selected="selected"><?php echo htmlspecialchars( $address["descountry"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                               
                            </select>
                         </div>
                         <div class="form-group">
                            <label>Estado</label>
                            <select class="form-control select2" style="width: 70%;">
-                              <?php $counter1=-1;  if( isset($delivery) && ( is_array($delivery) || $delivery instanceof Traversable ) && sizeof($delivery) ) foreach( $delivery as $key1 => $value1 ){ $counter1++; ?><option selected="selected"><?php echo htmlspecialchars( $value1["UF_NOME"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option><?php } ?>
+                             <option name="desstate" selected="selected"><?php echo htmlspecialchars( $address["desstate"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                            </select>
                         </div>
                         
@@ -54,23 +58,34 @@
                   <!-- text input -->
                   <div class="form-group">
                      <label>CEP</label>
-                     <input type="text" class="form-control" placeholder="Enter ...">
+
+                     <input type="text" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" placeholder="00000-000" id="billing_cep_1" name="zipcode" class="form-control" style="width: 15%;">
+					
+					<input type="submit" value="Atualizar CEP" id="place_order" class="btn btn-info" formaction="/admin/delivery-settings" formmethod="get">
+
+
+
+
+
+					<!--
+                     <input type="text" class="form-control" value="<?php echo htmlspecialchars( $address["deszipcode"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" nome="zipcode" placeholder="00000-000" style="width: 15%;" >
+
+                      <input type="submit" value="Atualizar CEP" id="place_order" class="btn btn-info" formaction="/admin/delivery-settings" formmethod="get">
+
+                    -->  
                   </div>
-                  <div class="form-group">
-                     <label>Cidade</label>
-                     <input type="text" class="form-control" placeholder="Enter ...">
-                  </div>
-                  <div class="form-group">
+					<div class="form-group">
                      <label>Endereço</label>
-                     <input type="text" class="form-control" placeholder="Enter ...">
+                     <input type="text" class="form-control" value="<?php echo htmlspecialchars( $address["desaddress"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" placeholder="Endereço" name="desaddress" >
                   </div>
                   <div class="form-group">
                      <label>Complemento</label>
-                     <input type="text" class="form-control" placeholder="Enter ...">
+                     <input type="text" class="form-control" name="descomplement" value="<?php echo htmlspecialchars( $address["descomplement"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" placeholder="Complemento (opcional)">
                   </div>
-                   <!-- SELECT2 EXAMPLE -->
-      
-            
+                  <div class="form-group">
+                     <label>Cidade</label>
+                     <input type="text" class="form-control" name="descity" value="<?php echo htmlspecialchars( $address["desdistrict"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" placeholder="Cidade">
+                  </div>
             </div>
             <!-- /.col -->
           </div>
@@ -96,7 +111,7 @@
               </div>
               <div class="form-group">
                      <label> Qtd Máxima Permitida para Múltiplos Endereços</label>
-                     <input type="text" class="form-control" placeholder="Enter ...">
+                     <input type="text" class="form-control" value="1" style="width: 50%;" >
                   </div>
             </div>
                   
